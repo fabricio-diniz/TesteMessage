@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TesteMessage.Models.Dados>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Home</h1>
+
+<p>
+    <a asp-action="CriarDado">Criar novo registro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                CPF/CNPJ
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpfCnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                <a asp-action="AtualizarDado" asp-route-id="@item.id">Atualizar registro</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
